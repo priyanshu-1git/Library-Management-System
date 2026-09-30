@@ -9,47 +9,50 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
+            background: #f2f2f7;
+            color: #1c1c1e;
         }
 
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #ffffff;
+            color: #1c1c1e;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
 
         .navbar h1 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
         .navbar .user-info {
             display: flex;
             align-items: center;
             gap: 20px;
+            font-weight: 500;
         }
 
         .btn-logout {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid white;
-            padding: 8px 20px;
-            border-radius: 6px;
+            background: #f2f2f7;
+            color: #ff3b30;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .btn-logout:hover {
-            background: white;
-            color: #667eea;
+            background: #e5e5ea;
         }
 
         .container {
@@ -67,53 +70,58 @@
 
         .stat-card {
             background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
         .stat-card .icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
 
         .stat-card .info h3 {
-            color: #666;
+            color: #8e8e93;
             font-size: 0.9rem;
-            margin-bottom: 5px;
+            font-weight: 500;
+            margin-bottom: 4px;
         }
 
         .stat-card .info p {
             font-size: 2rem;
-            font-weight: bold;
-            color: #333;
+            font-weight: 700;
+            color: #1c1c1e;
+            letter-spacing: -0.5px;
         }
 
         .tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            background: #e5e5ea;
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
+            width: fit-content;
         }
 
         .tab-btn {
-            padding: 12px 24px;
-            background: none;
+            padding: 8px 20px;
+            background: transparent;
             border: none;
-            border-bottom: 3px solid transparent;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1c1c1e;
+            transition: all 0.2s ease;
         }
 
         .tab-btn.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            font-weight: 600;
         }
 
         .tab-content {
@@ -127,14 +135,14 @@
         .content-card {
             background: white;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
         }
 
         .search-bar {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
@@ -142,49 +150,96 @@
         .search-bar select {
             flex: 1;
             min-width: 200px;
-            padding: 10px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 12px 16px;
+            background: #f2f2f7;
+            border: 1px solid transparent;
+            border-radius: 10px;
             font-size: 1rem;
+            color: #1c1c1e;
+            -webkit-appearance: none;
+        }
+
+        input[list] {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%238e8e93" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') !important;
+            background-repeat: no-repeat !important;
+            background-position: right 12px center !important;
+            padding-right: 40px !important;
+        }
+
+        input[list]:focus {
+            background-color: #ffffff !important;
+        }
+
+        input[list]::-webkit-calendar-picker-indicator {
+            opacity: 0 !important;
+            display: block !important;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+        }
+
+        .search-bar input:focus,
+        .search-bar select:focus {
+            outline: none;
+            background: #ffffff;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
         }
 
         .search-bar button, .btn-primary {
-            padding: 10px 30px;
-            background: #667eea;
+            padding: 12px 24px;
+            background: #007AFF;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.2s;
         }
 
         .search-bar button:hover, .btn-primary:hover {
-            background: #5568d3;
+            background: #006ce4;
+        }
+
+        .search-bar button:active, .btn-primary:active {
+            transform: scale(0.98);
         }
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin-top: 20px;
         }
 
         table th {
-            background: #f8f9fa;
-            padding: 15px;
+            background: #f2f2f7;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 600;
-            color: #333;
-            border-bottom: 2px solid #e0e0e0;
+            font-size: 0.9rem;
+            color: #8e8e93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        
+        table th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+        table th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
 
         table td {
-            padding: 15px;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 16px;
+            border-bottom: 1px solid #e5e5ea;
+            color: #1c1c1e;
+            font-size: 0.95rem;
         }
 
-        table tr:hover {
-            background: #f8f9fa;
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover td {
+            background: #f9f9fb;
         }
 
         .btn-action {
@@ -195,34 +250,22 @@
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
-        .btn-edit {
-            background: #4caf50;
-            color: white;
-        }
-
-        .btn-delete {
-            background: #f44336;
-            color: white;
-        }
-
-        .btn-return {
-            background: #2196f3;
-            color: white;
-        }
+        .btn-edit { background: #34c75915; color: #34c759; }
+        .btn-delete { background: #ff3b3015; color: #ff3b30; }
+        .btn-return { background: #007aff15; color: #007AFF; }
 
         .btn-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            filter: brightness(0.95);
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .form-group {
@@ -232,16 +275,28 @@
 
         .form-group label {
             margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
+            font-weight: 500;
+            color: #1c1c1e;
+            font-size: 0.9rem;
         }
 
         .form-group input,
         .form-group select {
-            padding: 10px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 12px 16px;
+            background: #f2f2f7;
+            border: 1px solid transparent;
+            border-radius: 10px;
             font-size: 1rem;
+            color: #1c1c1e;
+            -webkit-appearance: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            background: #ffffff;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
         }
 
         .modal {
@@ -251,7 +306,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -263,54 +319,62 @@
 
         .modal-content {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
+            padding: 32px;
+            border-radius: 20px;
             max-width: 600px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .modal-header h2 {
-            color: #333;
+            color: #1c1c1e;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .close-modal {
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            color: #999;
+            color: #8e8e93;
+            background: #f2f2f7;
             border: none;
-            background: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        
+        .close-modal:hover {
+            background: #e5e5ea;
         }
 
         .badge {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
         }
 
-        .badge-success {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .badge-danger {
-            background: #f8d7da;
-            color: #721c24;
-        }
+        .badge-success { background: #34c75915; color: #34c759; }
+        .badge-danger { background: #ff3b3015; color: #ff3b30; }
 
         .loading {
             text-align: center;
             padding: 40px;
-            color: #666;
+            color: #8e8e93;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -401,12 +465,16 @@
                 <form id="issueForm">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label>Student User ID</label>
-                            <input type="number" id="issueUserId" required>
+                            <label>Student</label>
+                            <input type="text" id="issueUserSearch" list="studentList" placeholder="Search Student..." required autocomplete="off" onfocus="this.value=''">
+                            <datalist id="studentList"></datalist>
+                            <input type="hidden" id="issueUserId">
                         </div>
                         <div class="form-group">
-                            <label>Book ID</label>
-                            <input type="number" id="issueBookId" required>
+                            <label>Book</label>
+                            <input type="text" id="issueBookSearch" list="bookList" placeholder="Search Book..." required autocomplete="off" onfocus="this.value=''">
+                            <datalist id="bookList"></datalist>
+                            <input type="hidden" id="issueBookId">
                         </div>
                     </div>
                     <button type="submit" class="btn-primary">Issue Book</button>
@@ -481,7 +549,7 @@
     </div>
 
     <script>
-        const API_BASE = 'http://localhost:8080/LibraryManagement/api';
+        const API_BASE = window.location.origin + '/LibraryManagement/api';
 
         // Check authentication
         const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -498,13 +566,38 @@
             event.target.classList.add('active');
 
             if (tabName === 'books') loadAllBooks();
+            if (tabName === 'issue') loadIssueOptions();
             if (tabName === 'issued') loadIssuedBooks();
+        }
+
+        async function loadIssueOptions() {
+            try {
+                // Fetch Students
+                const userRes = await fetch(`${API_BASE}/users`, { cache: 'no-store' });
+                if (userRes.ok) {
+                    const users = await userRes.json();
+                    document.getElementById('studentList').innerHTML = users.map(u => 
+                        `<option value="${u.fullName} — ${u.studentId || u.userId}" data-id="${u.userId}">${u.username}</option>`
+                    ).join('');
+                }
+                
+                // Fetch Available Books
+                const bookRes = await fetch(`${API_BASE}/books?action=available`, { cache: 'no-store' });
+                if (bookRes.ok) {
+                    const books = await bookRes.json();
+                    document.getElementById('bookList').innerHTML = books.map(b => 
+                        `<option value="${b.bookId} — ${b.title}" data-id="${b.bookId}">${b.author}</option>`
+                    ).join('');
+                }
+            } catch (e) {
+                console.error("Error loading issue options", e);
+            }
         }
 
         // Load all books - REAL API CALL
         async function loadAllBooks() {
             try {
-                const response = await fetch(`${API_BASE}/books`);
+                const response = await fetch(`${API_BASE}/books`, { cache: 'no-store' });
                 const books = await response.json();
                 
                 const tbody = document.getElementById('booksTableBody');
@@ -571,29 +664,70 @@
         // Load issued books - REAL API CALL
         async function loadIssuedBooks() {
             try {
-                const response = await fetch(`${API_BASE}/issue`);
+                // Fetch students count
+                try {
+                    const studentsRes = await fetch(`${API_BASE}/register`, { cache: 'no-store' });
+                    const students = await studentsRes.json();
+                    if(Array.isArray(students)) {
+                        document.getElementById('totalStudents').textContent = students.length;
+                    }
+                } catch(e) { console.error('Error fetching students:', e); }
+
+                const response = await fetch(`${API_BASE}/issue`, { cache: 'no-store' });
                 const issued = await response.json();
                 
                 const tbody = document.getElementById('issuedBooksTableBody');
+                let overdueCount = 0;
+                let activeIssuedCount = 0;
+
                 if (issued.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="7" style="text-align:center">No issued books</td></tr>';
                     document.getElementById('issuedBooks').textContent = '0';
+                    document.getElementById('overdueBooks').textContent = '0';
                     return;
                 }
 
-                tbody.innerHTML = issued.map(item => `
+                tbody.innerHTML = issued.map(item => {
+                    const parts = item.dueDate.split('-');
+                    const dueDate = new Date(parts[0], parts[1]-1, parts[2]);
+                    const today = new Date(2026, 8, 30); // Force Sept 30, 2026 for demo
+                    today.setHours(0,0,0,0);
+                    const diffInMillis = today.getTime() - dueDate.getTime();
+                    const daysOverdue = Math.floor(diffInMillis / (1000 * 60 * 60 * 24));
+                    const isOverdue = daysOverdue > 0;
+                    
+                    let currentFine = 0;
+                    if(item.status === 'ISSUED') {
+                        activeIssuedCount++;
+                        if(isOverdue) {
+                            overdueCount++;
+                            currentFine = daysOverdue * 5;
+                        }
+                    } else if (item.status === 'RETURNED' && item.fineAmount) {
+                        currentFine = item.fineAmount;
+                    }
+                    
+                    const badgeClass = item.status === 'RETURNED' ? 'badge-success' : (isOverdue ? 'badge-danger' : 'badge-success');
+                    let statusDisplay = item.status === 'RETURNED' ? 'RETURNED' : (isOverdue ? 'OVERDUE' : 'ISSUED');
+                    if (currentFine > 0) {
+                        statusDisplay += `<br><small style="color: #ff3b30; font-weight: bold; margin-top: 4px; display: inline-block;">₹${currentFine} fine</small>`;
+                    }
+
+                    return `
                     <tr>
                         <td>${item.issueId}</td>
                         <td>${item.bookTitle}</td>
                         <td>${item.userName}</td>
                         <td>${item.issueDate}</td>
                         <td>${item.dueDate}</td>
-                        <td><span class="badge badge-success">${item.status}</span></td>
-                        <td><button class="btn-action btn-return" onclick="returnBook(${item.issueId})">Return</button></td>
+                        <td><span class="badge ${badgeClass}">${statusDisplay}</span></td>
+                        <td>${item.status === 'ISSUED' ? `<button class="btn-action btn-return" onclick="returnBook(${item.issueId}, ${daysOverdue > 0 ? daysOverdue : 0}, ${currentFine})">Return</button>` : '-'}</td>
                     </tr>
-                `).join('');
+                    `;
+                }).join('');
 
-                document.getElementById('issuedBooks').textContent = issued.length;
+                document.getElementById('issuedBooks').textContent = activeIssuedCount;
+                document.getElementById('overdueBooks').textContent = overdueCount;
             } catch (error) {
                 console.error('Error loading issued books:', error);
             }
@@ -638,11 +772,41 @@
         // Issue book - REAL API CALL
         document.getElementById('issueForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            const userSearch = document.getElementById('issueUserSearch').value;
+            const bookSearch = document.getElementById('issueBookSearch').value;
+            
+            let userId = null;
+            const userOptions = document.getElementById('studentList').options;
+            for (let i = 0; i < userOptions.length; i++) {
+                if (userOptions[i].value === userSearch) {
+                    userId = parseInt(userOptions[i].getAttribute('data-id'));
+                    break;
+                }
+            }
+            
+            let bookId = null;
+            const bookOptions = document.getElementById('bookList').options;
+            for (let i = 0; i < bookOptions.length; i++) {
+                if (bookOptions[i].value === bookSearch) {
+                    bookId = parseInt(bookOptions[i].getAttribute('data-id'));
+                    break;
+                }
+            }
+            
+            if (!userId) {
+                alert('Please select a valid existing student from the list.');
+                return;
+            }
+            if (!bookId) {
+                alert('Please select a valid available book from the list.');
+                return;
+            }
 
             const issueData = {
                 action: 'issue',
-                bookId: parseInt(document.getElementById('issueBookId').value),
-                userId: parseInt(document.getElementById('issueUserId').value)
+                bookId: bookId,
+                userId: userId
             };
 
             try {
@@ -657,6 +821,9 @@
                 if (result.success) {
                     alert(result.message);
                     document.getElementById('issueForm').reset();
+                    loadIssueOptions();
+                    loadIssuedBooks();
+                    loadAllBooks();
                 } else {
                     alert('Error: ' + result.message);
                 }
@@ -667,8 +834,12 @@
         });
 
         // Return book - REAL API CALL
-        async function returnBook(issueId) {
-            if (!confirm('Confirm book return?')) return;
+        async function returnBook(issueId, daysOverdue = 0, currentFine = 0) {
+            let msg = 'Confirm book return?';
+            if (daysOverdue > 0 && currentFine > 0) {
+                msg = `This book is ${daysOverdue} days overdue.\nFine: ₹${currentFine}\n\nConfirm book return?`;
+            }
+            if (!confirm(msg)) return;
 
             try {
                 const response = await fetch(`${API_BASE}/issue`, {
@@ -682,6 +853,7 @@
                 if (result.success) {
                     alert(result.message);
                     loadIssuedBooks();
+                    loadAllBooks();
                 } else {
                     alert('Error: ' + result.message);
                 }
@@ -708,6 +880,7 @@
 
         // Load initial data
         loadAllBooks();
+        loadIssuedBooks();
     </script>
 </body>
 </html>

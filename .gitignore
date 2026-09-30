@@ -1,0 +1,23 @@
+# Compiled Java files
+*.class
+
+# Generated deployment artifact
+*.war
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# Build/output directories
+target/
+build/
+out/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment/configuration
+.env
+.env.*

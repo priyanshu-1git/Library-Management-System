@@ -32,6 +32,27 @@ public class RegisterServlet extends HttpServlet {
     }
     
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        
+        PrintWriter out = response.getWriter();
+        try {
+            java.util.List<User> students = userService.getAllStudents();
+            out.print(gson.toJson(students));
+        } catch (Exception e) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("success", false);
+            errorResponse.put("message", "Error: " + e.getMessage());
+            out.print(gson.toJson(errorResponse));
+        }
+        out.flush();
+    }
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         

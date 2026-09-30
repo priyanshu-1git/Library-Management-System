@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Settings</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f5f5f7; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background-color: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 400px; text-align: center; }
+        h1 { font-size: 1.5rem; margin-top: 0; color: #1d1d1f; }
+        p { color: #515154; font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px; }
+        button { background-color: #ff3b30; color: white; border: none; padding: 12px 24px; font-size: 1rem; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%; }
+        button:hover { background-color: #e33026; }
+        button:disabled { background-color: #ff9d98; cursor: not-allowed; }
+        .logout { margin-top: 20px; font-size: 0.9rem; color: #0071e3; cursor: pointer; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Developer Area</h1>
+        <p>Private controls for portfolio demonstration purposes.</p>
+        
+        <button id="resetBtn" onclick="resetDemo()">Reset Demo Data</button>
+        <br>
+        <a class="logout" onclick="logout()">Logout</a>
+    </div>
+
+    <script>
+        const API_BASE = window.location.origin + '/LibraryManagement/api';
+
+        // Auth check
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || user.role !== 'DEVELOPER') {
+            window.location.href = 'login.html';
+        }
+
+        async function resetDemo() {
+            if (confirm("Reset Demo Data?\n\nThis operation will restore the original portfolio/demo state and completely overwrite the current demo database state. All current records will be lost.")) {
+                
+                const btn = document.getElementById('resetBtn');
+                btn.disabled = true;
+                btn.textContent = 'Resetting...';
+                
+                try {
+                    const response = await fetch(`${API_BASE}/developer/reset-demo`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                    
+                    const result = await response.json();
+                    if (response.ok && result.success) {
+                        alert("Success: " + result.message);
+                    } else {
+                        alert("Error: " + (result.message || 'Unknown error'));
+                    }
+                } catch (e) {
+                    alert("Network Error: " + e.message);
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = 'Reset Demo Data';
+                }
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

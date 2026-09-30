@@ -15,10 +15,19 @@ public class User {
     private String fullName;
     private String email;
     private String role; // ADMIN or STUDENT
+    private String studentId;
     private Timestamp createdAt;
     
     // Default Constructor
     public User() {
+    }
+    
+    public String getStudentId() {
+        return studentId;
+    }
+    
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
     
     // Constructor for user registration

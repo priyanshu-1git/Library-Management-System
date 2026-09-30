@@ -9,47 +9,50 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
+            background: #f2f2f7;
+            color: #1c1c1e;
         }
 
         .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #ffffff;
+            color: #1c1c1e;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
 
         .navbar h1 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
         .navbar .user-info {
             display: flex;
             align-items: center;
             gap: 20px;
+            font-weight: 500;
         }
 
         .btn-logout {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid white;
-            padding: 8px 20px;
-            border-radius: 6px;
+            background: #f2f2f7;
+            color: #ff3b30;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .btn-logout:hover {
-            background: white;
-            color: #667eea;
+            background: #e5e5ea;
         }
 
         .container {
@@ -67,53 +70,58 @@
 
         .stat-card {
             background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
         .stat-card .icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
 
         .stat-card .info h3 {
-            color: #666;
+            color: #8e8e93;
             font-size: 0.9rem;
-            margin-bottom: 5px;
+            font-weight: 500;
+            margin-bottom: 4px;
         }
 
         .stat-card .info p {
             font-size: 2rem;
-            font-weight: bold;
-            color: #333;
+            font-weight: 700;
+            color: #1c1c1e;
+            letter-spacing: -0.5px;
         }
 
         .tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            background: #e5e5ea;
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
+            width: fit-content;
         }
 
         .tab-btn {
-            padding: 12px 24px;
-            background: none;
+            padding: 8px 20px;
+            background: transparent;
             border: none;
-            border-bottom: 3px solid transparent;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1c1c1e;
+            transition: all 0.2s ease;
         }
 
         .tab-btn.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            font-weight: 600;
         }
 
         .tab-content {
@@ -127,14 +135,14 @@
         .content-card {
             background: white;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
         }
 
         .search-bar {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
@@ -142,134 +150,169 @@
         .search-bar select {
             flex: 1;
             min-width: 200px;
-            padding: 10px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 12px 16px;
+            background: #f2f2f7;
+            border: 1px solid transparent;
+            border-radius: 10px;
             font-size: 1rem;
+            color: #1c1c1e;
+            -webkit-appearance: none;
+        }
+        
+        .search-bar input:focus,
+        .search-bar select:focus {
+            outline: none;
+            background: #ffffff;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
         }
 
         .search-bar button {
-            padding: 10px 30px;
-            background: #667eea;
+            padding: 12px 24px;
+            background: #007AFF;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.2s;
         }
 
         .search-bar button:hover {
-            background: #5568d3;
+            background: #006ce4;
+        }
+        
+        .search-bar button:active {
+            transform: scale(0.98);
         }
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin-top: 20px;
         }
 
         table th {
-            background: #f8f9fa;
-            padding: 15px;
+            background: #f2f2f7;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 600;
-            color: #333;
-            border-bottom: 2px solid #e0e0e0;
+            font-size: 0.9rem;
+            color: #8e8e93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        
+        table th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+        table th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
 
         table td {
-            padding: 15px;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 16px;
+            border-bottom: 1px solid #e5e5ea;
+            color: #1c1c1e;
+            font-size: 0.95rem;
         }
 
-        table tr:hover {
-            background: #f8f9fa;
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover td {
+            background: #f9f9fb;
         }
 
         .badge {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
         }
 
-        .badge-success {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .badge-danger {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .badge-warning {
-            background: #fff3cd;
-            color: #856404;
-        }
+        .badge-success { background: #34c75915; color: #34c759; }
+        .badge-danger { background: #ff3b3015; color: #ff3b30; }
+        .badge-warning { background: #ffcc0015; color: #d09400; }
 
         .book-card {
             background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+            transition: all 0.2s;
             cursor: pointer;
+            border: 1px solid #e5e5ea;
         }
 
         .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border-color: transparent;
         }
 
         .book-card h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            color: #1c1c1e;
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .book-card p {
-            color: #666;
-            margin-bottom: 5px;
+            color: #8e8e93;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        
+        .book-card p strong {
+            color: #1c1c1e;
+            font-weight: 500;
         }
 
         .book-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            gap: 24px;
+            margin-top: 24px;
         }
 
         .availability {
-            margin-top: 10px;
-            font-weight: 600;
+            margin-top: 16px !important;
+            font-weight: 600 !important;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem !important;
         }
 
         .available {
-            color: #4caf50;
+            background: #34c75915;
+            color: #34c759 !important;
         }
 
         .unavailable {
-            color: #f44336;
+            background: #ff3b3015;
+            color: #ff3b30 !important;
         }
 
         .alert {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .alert-warning {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeaa7;
+            background: #ffcc0015;
+            color: #d09400;
+            border: 1px solid #ffcc0040;
         }
 
         .alert-info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
+            background: #007aff15;
+            color: #007AFF;
+            border: 1px solid #007aff40;
         }
     </style>
 </head>
@@ -277,7 +320,10 @@
     <div class="navbar">
         <h1>📚 Library Management System</h1>
         <div class="user-info">
-            <span id="userFullName">Student User</span>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2;">
+                <span id="userFullName">Student User</span>
+                <span id="studentIdDisplay" style="font-size: 0.8rem; color: #8e8e93; font-weight: 400; margin-top: 2px;">Student ID: -</span>
+            </div>
             <button class="btn-logout" onclick="logout()">Logout</button>
         </div>
     </div>
@@ -415,8 +461,8 @@
                     </tbody>
                 </table>
 
-                <div class="alert alert-warning" style="margin-top: 20px;">
-                    <strong>⚠️ Overdue:</strong> You have 1 overdue book. Please return it as soon as possible to avoid further fines.
+                <div id="overdueAlertContainer" class="alert alert-warning" style="margin-top: 20px; display: none;">
+                    <strong>⚠️ Overdue:</strong> You have <span id="overdueAlertCount">1</span> overdue book. Please return it as soon as possible to avoid further fines.
                 </div>
             </div>
         </div>
@@ -477,7 +523,7 @@
     </div>
 
     <script>
-        const API_BASE = 'http://localhost:8080/LibraryManagement/api';
+        const API_BASE = window.location.origin + '/LibraryManagement/api';
 
         // Check authentication
         const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -485,6 +531,9 @@
             window.location.href = 'login.html';
         }
         document.getElementById('userFullName').textContent = user.fullName;
+        if (user.studentId) {
+            document.getElementById('studentIdDisplay').textContent = 'Student ID: ' + user.studentId;
+        }
 
         // Tab switching
         function showTab(tabName) {
@@ -496,6 +545,12 @@
             if (tabName === 'browse') loadAvailableBooks();
             if (tabName === 'mybooks') loadMyIssuedBooks();
             if (tabName === 'history') loadMyHistory();
+        }
+
+        // Global state for fines
+        let activeFines = 0;
+        function updateTotalFine() {
+            document.getElementById('totalFine').textContent = '₹' + activeFines.toFixed(2);
         }
 
         // Load available books - REAL API CALL
@@ -572,16 +627,34 @@
                 const issued = await response.json();
                 
                 const tbody = document.getElementById('myIssuedBooksTable');
+                let overdueCount = 0;
+                activeFines = 0; // Reset
+                
                 if (issued.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">You have no issued books currently</td></tr>';
                     document.getElementById('myIssuedBooks').textContent = '0';
                     document.getElementById('availableLimit').textContent = '3';
+                    document.getElementById('myOverdueBooks').textContent = '0';
+                    if(document.getElementById('overdueAlertContainer')) document.getElementById('overdueAlertContainer').style.display = 'none';
+                    updateTotalFine();
                     return;
                 }
 
                 tbody.innerHTML = issued.map(item => {
-                    const daysLeft = Math.ceil((new Date(item.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
-                    const isOverdue = daysLeft < 0;
+                    const parts = item.dueDate.split('-');
+                    const dueDate = new Date(parts[0], parts[1]-1, parts[2]);
+                    const today = new Date(2026, 8, 30); // Force Sept 30, 2026 for demo
+                    today.setHours(0,0,0,0);
+                    const diffInMillis = today.getTime() - dueDate.getTime();
+                    const daysOverdue = Math.floor(diffInMillis / (1000 * 60 * 60 * 24));
+                    const isOverdue = daysOverdue > 0;
+                    
+                    if(isOverdue) {
+                        overdueCount++;
+                        activeFines += daysOverdue * 5;
+                    }
+                    
+                    const daysDisplay = isOverdue ? `${daysOverdue} days overdue` : `${-daysOverdue} days left`;
                     
                     return `
                         <tr>
@@ -589,7 +662,7 @@
                             <td>${item.bookAuthor}</td>
                             <td>${item.issueDate}</td>
                             <td>${item.dueDate}</td>
-                            <td>${daysLeft} days</td>
+                            <td>${daysDisplay}</td>
                             <td><span class="badge ${isOverdue ? 'badge-warning' : 'badge-success'}">
                                 ${isOverdue ? 'Overdue' : 'Active'}
                             </span></td>
@@ -599,6 +672,18 @@
 
                 document.getElementById('myIssuedBooks').textContent = issued.length;
                 document.getElementById('availableLimit').textContent = Math.max(0, 3 - issued.length);
+                document.getElementById('myOverdueBooks').textContent = overdueCount;
+                
+                const alertDiv = document.getElementById('overdueAlertContainer');
+                if (alertDiv) {
+                    if (overdueCount > 0) {
+                        alertDiv.style.display = 'block';
+                        alertDiv.innerHTML = `<strong>⚠️ Overdue:</strong> You have ${overdueCount} overdue book${overdueCount > 1 ? 's' : ''}. Please return as soon as possible to avoid further fines.`;
+                    } else {
+                        alertDiv.style.display = 'none';
+                    }
+                }
+                updateTotalFine();
             } catch (error) {
                 console.error('Error loading issued books:', error);
             }
@@ -611,21 +696,35 @@
                 const history = await response.json();
                 
                 const tbody = document.getElementById('historyTable');
+                
                 if (history.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No history available</td></tr>';
+                    updateTotalFine();
                     return;
                 }
 
-                let totalFine = 0;
                 tbody.innerHTML = history.map(item => {
-                    totalFine += item.fineAmount || 0;
+                    let displayFine = item.fineAmount || 0;
+                    
+                    if (!item.returnDate || item.status === 'ISSUED') {
+                        const parts = item.dueDate.split('-');
+                        const dueDate = new Date(parts[0], parts[1]-1, parts[2]);
+                        const today = new Date(2026, 8, 30);
+                        today.setHours(0,0,0,0);
+                        const diffInMillis = today.getTime() - dueDate.getTime();
+                        const daysOverdue = Math.floor(diffInMillis / (1000 * 60 * 60 * 24));
+                        if (daysOverdue > 0) {
+                            displayFine = daysOverdue * 5;
+                        }
+                    }
+                    
                     return `
                         <tr>
                             <td>${item.bookTitle}</td>
                             <td>${item.bookAuthor}</td>
                             <td>${item.issueDate}</td>
                             <td>${item.returnDate || '-'}</td>
-                            <td>Rs ${(item.fineAmount || 0).toFixed(2)}</td>
+                            <td>₹${displayFine.toFixed(2)}</td>
                             <td><span class="badge ${item.status === 'RETURNED' ? 'badge-success' : 'badge-warning'}">
                                 ${item.status}
                             </span></td>
@@ -633,7 +732,7 @@
                     `;
                 }).join('');
 
-                document.getElementById('totalFine').textContent = 'Rs ' + totalFine.toFixed(2);
+                updateTotalFine();
             } catch (error) {
                 console.error('Error loading history:', error);
             }
@@ -647,6 +746,7 @@
         // Initialize
         loadAvailableBooks();
         loadMyIssuedBooks();
+        loadMyHistory();
     </script>
 </body>
 </html>

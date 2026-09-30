@@ -23,7 +23,7 @@ public class UserDAO {
         String sql = "INSERT INTO users (username, password, full_name, email, role) VALUES (?, ?, ?, ?, ?)";
         
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getPassword()); // In production, hash the password
@@ -32,6 +32,21 @@ public class UserDAO {
             pstmt.setString(5, user.getRole());
             
             int rowsAffected = pstmt.executeUpdate();
+            
+            if (rowsAffected > 0 && "STUDENT".equals(user.getRole())) {
+                try (ResultSet rs = pstmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        int id = rs.getInt(1);
+                        String stId = String.format("STU%04d", id);
+                        try (PreparedStatement update = conn.prepareStatement("UPDATE users SET student_id = ? WHERE user_id = ?")) {
+                            update.setString(1, stId);
+                            update.setInt(2, id);
+                            update.executeUpdate();
+                        }
+                    }
+                }
+            }
+            
             return rowsAffected > 0;
             
         } catch (SQLException e) {
@@ -279,6 +294,14 @@ public class UserDAO {
         user.setEmail(rs.getString("email"));
         user.setRole(rs.getString("role"));
         user.setCreatedAt(rs.getTimestamp("created_at"));
+        
+        // Attempt to extract student_id if it exists in the result set
+        try {
+            user.setStudentId(rs.getString("student_id"));
+        } catch (SQLException e) {
+            // Column might not exist in some queries, ignore
+        }
+        
         return user;
     }
 }

@@ -9,11 +9,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #f2f2f7;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,9 +22,9 @@
         }
 
         .container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0,0,0,0.04);
             overflow: hidden;
             max-width: 900px;
             width: 100%;
@@ -32,7 +32,7 @@
         }
 
         .left-panel {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #007AFF;
             color: white;
             padding: 60px 40px;
             flex: 1;
@@ -42,51 +42,63 @@
         }
 
         .left-panel h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
 
         .left-panel p {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            line-height: 1.5;
             opacity: 0.9;
         }
 
         .right-panel {
             padding: 60px 40px;
             flex: 1;
+            background: #ffffff;
         }
 
         .form-container h2 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2rem;
+            color: #1c1c1e;
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .form-container p {
-            color: #666;
-            margin-bottom: 30px;
+            color: #8e8e93;
+            margin-bottom: 28px;
+            font-size: 0.95rem;
         }
 
         .tab-container {
             display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #e0e0e0;
+            background: #e5e5ea;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 28px;
         }
 
         .tab {
-            padding: 10px 20px;
+            flex: 1;
+            text-align: center;
+            padding: 8px 16px;
             cursor: pointer;
-            color: #666;
-            font-weight: 600;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
+            color: #1c1c1e;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
 
         .tab.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            color: #007AFF;
+            font-weight: 600;
         }
 
         .form-group {
@@ -95,46 +107,52 @@
 
         .form-group label {
             display: block;
-            color: #333;
-            font-weight: 600;
+            color: #1c1c1e;
+            font-weight: 500;
+            font-size: 0.9rem;
             margin-bottom: 8px;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 14px 16px;
+            background: #f2f2f7;
+            border: 1px solid transparent;
+            border-radius: 12px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            color: #1c1c1e;
+            transition: all 0.2s ease;
+            -webkit-appearance: none;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #667eea;
+            background: #ffffff;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
         }
 
         .btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #007AFF;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
+            background: #006ce4;
         }
 
         .btn:active {
-            transform: translateY(0);
+            transform: scale(0.98);
         }
 
         .btn:disabled {
@@ -143,22 +161,22 @@
         }
 
         .message {
-            padding: 12px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
             margin-bottom: 20px;
             display: none;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .message.error {
-            background-color: #fee;
-            color: #c33;
-            border: 1px solid #fcc;
+            background-color: #ff3b3015;
+            color: #ff3b30;
         }
 
         .message.success {
-            background-color: #efe;
-            color: #3c3;
-            border: 1px solid #cfc;
+            background-color: #34c75915;
+            color: #34c759;
         }
 
         #registerForm {
@@ -167,12 +185,14 @@
 
         .loading {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,.3);
             border-radius: 50%;
             border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
         }
 
         @keyframes spin {
@@ -189,8 +209,30 @@
             }
 
             .left-panel h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
+            
+            .right-panel {
+                padding: 40px 30px;
+            }
+        }
+
+        .demo-accounts {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+        .demo-accounts h3 {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .demo-accounts p {
+            margin-bottom: 6px !important;
+            font-size: 0.9rem !important;
+            opacity: 1 !important;
         }
     </style>
 </head>
@@ -199,6 +241,14 @@
         <div class="left-panel">
             <h1>📚 Library Management System</h1>
             <p>Manage your library efficiently with our comprehensive system. Access thousands of books, track issues, and manage returns seamlessly.</p>
+            
+            <div class="demo-accounts">
+                <h3>Demo Accounts</h3>
+                <p><strong>Admin:</strong> admin / Admin123</p>
+                <p><strong>Student 1:</strong> priyanshu / Priyanshu123</p>
+                <p><strong>Student 2:</strong> vaibhav / Vaibhav123</p>
+                <p><strong>Student 3:</strong> kshitij / Kshitij123</p>
+            </div>
         </div>
 
         <div class="right-panel">
@@ -266,8 +316,8 @@
     </div>
 
     <script>
-        // API Base URL - CHANGE THIS TO YOUR TOMCAT URL
-        const API_BASE = 'http://localhost:8080/LibraryManagement/api';
+        // API Base URL - Dynamically determined for deployment safety
+        const API_BASE = window.location.origin + '/LibraryManagement/api';
 
         // Toggle between login and register forms
         function showLogin() {
@@ -333,6 +383,8 @@
                     setTimeout(() => {
                         if (data.role === 'ADMIN') {
                             window.location.href = 'admin-dashboard.html';
+                        } else if (data.role === 'DEVELOPER') {
+                            window.location.href = 'developer-dashboard.html';
                         } else {
                             window.location.href = 'student-dashboard.html';
                         }

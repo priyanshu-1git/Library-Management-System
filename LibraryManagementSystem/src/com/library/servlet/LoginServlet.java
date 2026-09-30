@@ -86,6 +86,9 @@ public class LoginServlet extends HttpServlet {
                 jsonResponse.put("fullName", user.getFullName());
                 jsonResponse.put("role", user.getRole());
                 jsonResponse.put("email", user.getEmail());
+                if (user.getStudentId() != null) {
+                    jsonResponse.put("studentId", user.getStudentId());
+                }
                 
                 System.out.println("User logged in: " + username);
             } else {
