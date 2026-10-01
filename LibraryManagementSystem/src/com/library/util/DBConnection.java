@@ -1,45 +1,53 @@
 package com.library.util;
 
+import java.net.URI;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
  * Database Connection Utility Class
- * Provides connection to MySQL database using JDBC
- * Implements Singleton pattern for efficient connection management
+ * Provides connection to MySQL/MariaDB database using JDBC.
  */
 public class DBConnection {
 
-    // Database credentials 
-    private static final String URL = System.getenv("DB_URL") != null ? System.getenv("DB_URL") : "jdbc:mysql://localhost:3306/library_db";
-    private static final String USERNAME = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "root";
-    private static final String PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    // Singleton instance
+    // Blitz provides the managed database through DATABASE_URL in:
+    // mysql://username:password@host:port/database
+    private static final String DATABASE_URL = System.getenv("DATABASE_URL");
+
+    // DB_URL / DB_USER / DB_PASSWORD remain supported for local development.
+    private static final String LEGACY_URL = System.getenv("DB_URL");
+    private static final String LEGACY_USER = System.getenv("DB_USER");
+    private static final String LEGACY_PASSWORD = System.getenv("DB_PASSWORD");
+
     private static Connection connection = null;
 
-    /**
-     * Private constructor to prevent instantiation
-     */
     private DBConnection() {
         // Private constructor
     }
 
-    /**
-     * Get database connection instance
-     * Creates new connection if not exists or if closed
-     * 
-     * @return Connection object
-     * @throws SQLException if connection fails
-     */
     public static Connection getConnection() throws SQLException {
         try {
-            // Load MySQL JDBC Driver
             if (connection == null || connection.isClosed()) {
                 Class.forName(DRIVER);
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+                if (DATABASE_URL != null && !DATABASE_URL.trim().isEmpty()) {
+                    connection = createConnectionFromDatabaseUrl(DATABASE_URL);
+                } else {
+                    String url = LEGACY_URL != null && !LEGACY_URL.trim().isEmpty()
+                            ? LEGACY_URL
+                            : "jdbc:mysql://localhost:3306/library_db";
+
+                    String username = LEGACY_USER != null ? LEGACY_USER : "root";
+                    String password = LEGACY_PASSWORD != null ? LEGACY_PASSWORD : "";
+
+                    connection = DriverManager.getConnection(url, username, password);
+                }
+
                 System.out.println("Database connected successfully!");
             }
         } catch (ClassNotFoundException e) {
@@ -49,12 +57,56 @@ public class DBConnection {
             System.err.println("Database connection failed!");
             throw new SQLException("Connection error: " + e.getMessage());
         }
+
         return connection;
     }
 
-    /**
-     * Close database connection
-     */
+    private static Connection createConnectionFromDatabaseUrl(String databaseUrl) throws SQLException {
+        try {
+            URI uri = new URI(databaseUrl);
+
+            String host = uri.getHost();
+            int port = uri.getPort() > 0 ? uri.getPort() : 3306;
+            String database = uri.getPath();
+
+            if (host == null || database == null || database.length() <= 1) {
+                throw new SQLException("Invalid DATABASE_URL format.");
+            }
+
+            database = database.substring(1);
+
+            String userInfo = uri.getUserInfo();
+            if (userInfo == null || userInfo.trim().isEmpty()) {
+                throw new SQLException("DATABASE_URL does not contain database credentials.");
+            }
+
+            int separator = userInfo.indexOf(':');
+            if (separator < 0) {
+                throw new SQLException("DATABASE_URL does not contain a password.");
+            }
+
+            String username = URLDecoder.decode(
+                    userInfo.substring(0, separator),
+                    StandardCharsets.UTF_8
+            );
+
+            String password = URLDecoder.decode(
+                    userInfo.substring(separator + 1),
+                    StandardCharsets.UTF_8
+            );
+
+            String jdbcUrl = "jdbc:mysql://" + host + ":" + port + "/" + database;
+
+            return DriverManager.getConnection(jdbcUrl, username, password);
+
+        } catch (Exception e) {
+            if (e instanceof SQLException) {
+                throw (SQLException) e;
+            }
+            throw new SQLException("Invalid DATABASE_URL: " + e.getMessage(), e);
+        }
+    }
+
     public static void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -66,11 +118,6 @@ public class DBConnection {
         }
     }
 
-    /**
-     * Test database connection
-     * 
-     * @return true if connection successful, false otherwise
-     */
     public static boolean testConnection() {
         try {
             Connection conn = getConnection();
