@@ -12,7 +12,8 @@
 [![JavaScript](https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Status](https://img.shields.io/badge/Status-Portfolio%20Project-blue)]()
 
-🔗 **Live Demo:** `Coming Soon`
+🔗 **Live Demo:** [Library Management System](https://librarymanagement.blitz.cloud/LibraryManagement/)
+
 📦 **Source Code:** [github.com/priyanshu-1git/Library-Management-System](https://github.com/priyanshu-1git/Library-Management-System)
 
 ---
