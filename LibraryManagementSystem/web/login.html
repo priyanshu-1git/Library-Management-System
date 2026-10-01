@@ -382,11 +382,11 @@
                     // Redirect based on role
                     setTimeout(() => {
                         if (data.role === 'ADMIN') {
-                            window.location.href = 'admin-dashboard.html';
+                            window.location.replace('admin-dashboard.html');
                         } else if (data.role === 'DEVELOPER') {
-                            window.location.href = 'developer-dashboard.html';
+                            window.location.replace('developer-dashboard.html');
                         } else {
-                            window.location.href = 'student-dashboard.html';
+                            window.location.replace('student-dashboard.html');
                         }
                     }, 1000);
                 } else {
@@ -459,16 +459,18 @@
         });
 
         // Check if already logged in
-        window.addEventListener('load', function() {
+        function checkAndRedirect() {
             const user = localStorage.getItem('user');
             if (user) {
                 const userData = JSON.parse(user);
-                if (userData.role === 'ADMIN') {
-                    window.location.href = 'admin-dashboard.html';
-                } else {
-                    window.location.href = 'student-dashboard.html';
-                }
+                if (userData.role === 'ADMIN') window.location.replace('admin-dashboard.html');
+                else if (userData.role === 'DEVELOPER') window.location.replace('developer-dashboard.html');
+                else window.location.replace('student-dashboard.html');
             }
+        }
+        window.addEventListener('load', checkAndRedirect);
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) checkAndRedirect();
         });
     </script>
 </body>

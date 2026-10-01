@@ -8,7 +8,7 @@ echo.
 cd src
 
 echo Step 1: Compiling Util...
-javac -cp ".;../lib/mysql-connector-j-9.5.0.jar" com/library/util/*.java
+javac -cp ".;../lib/mysql-connector-j-9.5.0.jar;../lib/servlet-api.jar" com/library/util/*.java
 
 echo Step 2: Compiling Models...
 javac -cp ".;../lib/mysql-connector-j-9.5.0.jar" com/library/model/*.java

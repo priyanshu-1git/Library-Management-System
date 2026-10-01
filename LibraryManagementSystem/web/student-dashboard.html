@@ -314,6 +314,40 @@
             color: #007AFF;
             border: 1px solid #007aff40;
         }
+            .table-responsive {
+            overflow-x: auto;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
+            }
+            .navbar .user-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .container {
+                padding: 15px 10px;
+            }
+            .content-card {
+                padding: 20px 15px;
+            }
+            .search-bar {
+                flex-direction: column;
+            }
+            .search-bar input, .search-bar select, .search-bar button {
+                width: 100%;
+                min-width: 100%;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -430,7 +464,7 @@
                     <strong>ℹ️ Note:</strong> Books must be returned within 14 days. Fine: Rs 5 per day after due date.
                 </div>
 
-                <table>
+                <div class="table-responsive"><table>
                     <thead>
                         <tr>
                             <th>Book Title</th>
@@ -459,7 +493,7 @@
                             <td><span class="badge badge-success">Active</span></td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
 
                 <div id="overdueAlertContainer" class="alert alert-warning" style="margin-top: 20px; display: none;">
                     <strong>⚠️ Overdue:</strong> You have <span id="overdueAlertCount">1</span> overdue book. Please return it as soon as possible to avoid further fines.
@@ -472,7 +506,7 @@
             <div class="content-card">
                 <h2 style="margin-bottom: 20px;">My Book History</h2>
                 
-                <table>
+                <div class="table-responsive"><table>
                     <thead>
                         <tr>
                             <th>Book Title</th>
@@ -517,7 +551,7 @@
                             <td><span class="badge badge-danger">Returned (Late)</span></td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
         </div>
     </div>
@@ -528,8 +562,37 @@
         // Check authentication
         const user = JSON.parse(localStorage.getItem('user') || '{}');
         if (!user.userId || user.role !== 'STUDENT') {
-            window.location.href = 'login.html';
+            window.location.replace('login.html');
         }
+
+        let isLoggingOut = false;
+
+        window.addEventListener('load', function() {
+            history.pushState(null, null, window.location.href);
+        });
+
+        window.addEventListener('popstate', function(event) {
+            if (isLoggingOut) {
+                window.location.replace('login.html');
+                return;
+            }
+            if (confirm("Do you want to log out?")) {
+                isLoggingOut = true;
+                localStorage.removeItem('user');
+                window.location.replace('login.html');
+            } else {
+                history.pushState(null, null, window.location.href);
+            }
+        });
+
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                const checkUser = JSON.parse(localStorage.getItem('user') || '{}');
+                if (!checkUser.userId || checkUser.role !== 'STUDENT') {
+                    window.location.replace('login.html');
+                }
+            }
+        });
         document.getElementById('userFullName').textContent = user.fullName;
         if (user.studentId) {
             document.getElementById('studentIdDisplay').textContent = 'Student ID: ' + user.studentId;
@@ -738,9 +801,10 @@
             }
         }
 
-        function logout() {
+                        function logout() {
+            isLoggingOut = true;
             localStorage.removeItem('user');
-            window.location.href = 'login.html';
+            window.location.replace('login.html');
         }
 
         // Initialize

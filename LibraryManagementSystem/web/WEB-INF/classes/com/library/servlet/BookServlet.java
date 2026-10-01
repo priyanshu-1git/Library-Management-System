@@ -28,7 +28,7 @@ public class BookServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         bookService = new BookService();
-        gson = new Gson();
+        gson = new com.google.gson.GsonBuilder().setDateFormat("yyyy-MM-dd").create();
         System.out.println("BookServlet initialized");
     }
     
