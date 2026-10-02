@@ -232,6 +232,8 @@ http://localhost:8080/LibraryManagement/
 The seed data includes roughly 50 sample books and a handful of user accounts for the Student and Admin workflows, plus a few pre-existing issue records (one active, one overdue, one returned) so the dashboards have real data to show without any manual setup.
 
 The available demo accounts and their credentials are defined in `database/demo_data.sql`.
+The live demo is available at the link below and uses the seeded demo environment.
+🔗 **Live Demo:** [Library Management System](https://librarymanagement.blitz.cloud/LibraryManagement/)
 
 ---
 
@@ -248,7 +250,6 @@ This is a learning/demo project, not a production system:
 ## 🔮 Future Improvements
 
 - Implement secure password hashing and authentication
-- Cloud deployment (so the live demo link above is no longer "coming soon")
 - Book reservation system
 - Pagination and advanced search/filtering
 - Automated tests
