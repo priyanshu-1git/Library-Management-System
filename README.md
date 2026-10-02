@@ -233,6 +233,7 @@ The seed data includes roughly 50 sample books and a handful of user accounts fo
 
 The available demo accounts and their credentials are defined in `database/demo_data.sql`.
 The live demo is available at the link below and uses the seeded demo environment.
+
 🔗 **Live Demo:** [Library Management System](https://librarymanagement.blitz.cloud/LibraryManagement/)
 
 ---
